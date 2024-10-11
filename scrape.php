@@ -26,6 +26,10 @@ $proxies = [
   "212.83.168.12:5836",
   "103.216.82.195:6667",
   "178.128.126.158:8080",
+  "123.456.789.0:8080",
+  "123.456.789.1:8080",
+  "123.456.789.2:8080",
+  "123.456.789.3.8080",
 ];
 
 //  user agent list
@@ -53,6 +57,9 @@ $user_agents = [
   "Mozilla/5.0 (Linux; U; Android 2.2.1; de-de; HTC_Wildfire_A3333 Build/FRG83D) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
   "Mozilla/5.0 (Linux; U; Android 2.1-update1; es-mx; SonyEricssonE10a Build/2.0.A.0.504) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17",
   "Mozilla/5.0 (Linux; U; Android 1.6; ar-us; SonyEricssonX10i Build/R2BA026) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1",
+  "Mozilla/5.0 (Linux; U; Android 1.6; ar-us; SonyEricssonX10i Build/R2BA026)
+  AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1",
+
 ];
 
 // Set the target URL for scraping
