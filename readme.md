@@ -1,4 +1,4 @@
-# Web Scra with Proxy and User-Agent Rotation
+# Web scrapping with Proxy and User-Agent Rotation
 
 This PHP script provides a simple web scraping solution with added features such as proxy rotation and user-agent rotation. It allows you to scrape multiple web pages while avoiding detection through IP blocking or user-agent filtering. The scraped HTML content is saved locally, and the scraper also has a recursive feature for internal links.
 
