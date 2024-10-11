@@ -1,99 +1,61 @@
 <?php
-//proxiy list
-$proxies = [
-  "23.94.59.115:8080",
-  "45.77.173.158:8080",
-  "178.128.126.86:3128",
-  "138.201.5.159:3128",
-  "51.15.242.202:8888",
-  "192.111.139.165:4145",
-  "51.68.207.81:80",
-  "202.5.56.71:8080",
-  "103.216.82.198:6667",
-  "149.28.149.145:8080",
-  "185.199.84.161:53281",
-  "198.50.152.64:23500",
-  "104.248.115.236:8080",
-  "51.79.50.22:9300",
-  "46.101.132.35:8080",
-  "165.22.223.174:8080",
-  "206.189.157.54:8080",
-  "51.79.50.31:9300",
-  "91.134.221.168:80",
-  "47.254.94.44:443",
-  "104.236.248.219:3128",
-  "139.162.78.109:8080",
-  "212.83.168.12:5836",
-  "103.216.82.195:6667",
-  "178.128.126.158:8080",
-  "123.456.789.0:8080",
-  "123.456.789.1:8080",
-  "123.456.789.2:8080",
-  "123.456.789.3.8080",
-];
+// Function to fetch proxies from the proxies.txt file
+function get_proxies()
+{
+  $file = "proxies.txt";
+  if (file_exists($file)) {
+    return file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+  } else {
+    echo "Proxy file not found!\n";
+    return [];
+  }
+}
 
-//  user agent list
-$user_agents = [
-  "Mozilla/5.0 (Linux; U; Android 4.0.3; ko-kr; LG-L160L Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
-  "Mozilla/5.0 (Linux; U; Android 4.0.3; de-ch; HTC Sensation Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
-  "Mozilla/5.0 (Linux; U; Android 2.3; en-us) AppleWebKit/999+ (KHTML, like Gecko) Safari/999.9",
-  "Mozilla/5.0 (Linux; U; Android 2.3.5; zh-cn; HTC_IncredibleS_S710e Build/GRJ90) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-  "Mozilla/5.0 (Linux; U; Android 2.3.5; en-us; HTC Vision Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-  "Mozilla/5.0 (Linux; U; Android 2.3.4; fr-fr; HTC Desire Build/GRJ22) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-  "Mozilla/5.0 (Linux; U; Android 2.3.4; en-us; T-Mobile myTouch 3G Slide Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-  "Mozilla/5.0 (Linux; U; Android 2.3.3; zh-tw; HTC_Pyramid Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-  "Mozilla/5.0 (Linux; U; Android 2.3.3; zh-tw; HTC_Pyramid Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari",
-  "Mozilla/5.0 (Linux; U; Android 2.3.3; zh-tw; HTC Pyramid Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-  "Mozilla/5.0 (Linux; U; Android 2.3.3; ko-kr; LG-LU3000 Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-  "Mozilla/5.0 (Linux; U; Android 2.3.3; en-us; HTC_DesireS_S510e Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-  "Mozilla/5.0 (Linux; U; Android 2.3.3; en-us; HTC_DesireS_S510e Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile",
-  "Mozilla/5.0 (Linux; U; Android 2.3.3; de-de; HTC Desire Build/GRI40) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-  "Mozilla/5.0 (Linux; U; Android 2.3.3; de-ch; HTC Desire Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-  "Mozilla/5.0 (Linux; U; Android 2.2; fr-lu; HTC Legend Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-  "Mozilla/5.0 (Linux; U; Android 2.2; en-sa; HTC_DesireHD_A9191 Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-  "Mozilla/5.0 (Linux; U; Android 2.2.1; fr-fr; HTC_DesireZ_A7272 Build/FRG83D) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-  "Mozilla/5.0 (Linux; U; Android 2.2.1; en-gb; HTC_DesireZ_A7272 Build/FRG83D) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-  "Mozilla/5.0 (Linux; U; Android 2.2.1; en-ca; LG-P505R Build/FRG83) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-  "Mozilla/5.0 (Linux; U; Android 2.2.1; de-de; HTC_Wildfire_A3333 Build/FRG83D) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-  "Mozilla/5.0 (Linux; U; Android 2.1-update1; es-mx; SonyEricssonE10a Build/2.0.A.0.504) AppleWebKit/530.17 (KHTML, like Gecko) Version/4.0 Mobile Safari/530.17",
-  "Mozilla/5.0 (Linux; U; Android 1.6; ar-us; SonyEricssonX10i Build/R2BA026) AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1",
-  "Mozilla/5.0 (Linux; U; Android 1.6; ar-us; SonyEricssonX10i Build/R2BA026)
-  AppleWebKit/528.5+ (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1",
-
-];
+// Function to fetch user agents from the user-agents.txt file
+function get_user_agents()
+{
+  $file = "user_agents.txt";
+  if (file_exists($file)) {
+    return file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+  } else {
+    echo "User-agent file not found!\n";
+    return [];
+  }
+}
 
 // Set the target URL for scraping
-$start_url = "your Url .com";
+$start_url = "your-url.com"; // Change this to the URL you want to scrape
 
-$visited_urls = []; // To track visited URLs
-$max_depth = 3; // Depth to crawl
-//you can chnge to 1 incase you only want to scrape a singel page
+$visited_urls = []; // Track URLs already visited
+$max_depth = 3; // Maximum depth for recursive scraping (to avoid going too deep)
 
 /**
- * Start the scraping process
+ * Main function to start scraping a website.
  */
 function scrape_site($url, $depth = 0)
 {
   global $visited_urls, $max_depth;
 
+  // If we've exceeded the maximum depth or already visited this URL, stop
   if ($depth > $max_depth || in_array($url, $visited_urls)) {
-    return; // Stop if depth exceeded or URL already visited
+    return;
   }
 
   echo "Scraping: $url\n";
 
+  // Fetch the HTML content of the URL
   $html = fetch_html($url);
   if (!$html) {
-    return; // if no HTML returned
+    return; // Stop if we couldn't retrieve HTML content
   }
 
-  // Save HTML content to file
+  // Save the HTML to a local file
   save_html_to_file($url, $html);
 
-  // Mark the URL as visited
+  // Mark this URL as visited
   $visited_urls[] = $url;
 
-  // Extract all internal links and scrape them recursively
+  // Extract internal links and recursively scrape them
   $links = extract_internal_links($html, $url);
   foreach ($links as $link) {
     scrape_site($link, $depth + 1);
@@ -101,25 +63,33 @@ function scrape_site($url, $depth = 0)
 }
 
 /**
- * Fetch the HTML content of the URL
+ * Fetch the HTML content from the given URL using cURL.
  */
 function fetch_html($url)
 {
-  global $proxies, $user_agents;
+  $proxies = get_proxies();
+  $user_agents = get_user_agents();
 
-  // Set Random proxy and user agent
+  if (empty($proxies) || empty($user_agents)) {
+    echo "No proxies or user-agents available for scraping.\n";
+    return false;
+  }
+
+  // Pick a random proxy and user-agent to make the request look more authentic
   $random_proxy = $proxies[array_rand($proxies)];
   $random_user_agent = $user_agents[array_rand($user_agents)];
 
+  // Set up the cURL request
   $ch = curl_init();
   curl_setopt($ch, CURLOPT_URL, $url);
-  curl_setopt($ch, CURLOPT_PROXY, $random_proxy);
-  curl_setopt($ch, CURLOPT_HTTPHEADER, ["User-Agent: " . $random_user_agent]);
+  curl_setopt($ch, CURLOPT_PROXY, $random_proxy); // Use the random proxy
+  curl_setopt($ch, CURLOPT_HTTPHEADER, ["User-Agent: " . $random_user_agent]); // Set the random user agent
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // Follow redirects
 
   $html = curl_exec($ch);
 
+  // Handle any cURL errors
   if (curl_errno($ch)) {
     echo "cURL Error: " . curl_error($ch) . "\n";
     curl_close($ch);
@@ -131,28 +101,28 @@ function fetch_html($url)
 }
 
 /**
- * Save the HTML content to a local file
+ * Save the HTML content to a local file.
  */
 function save_html_to_file($url, $html)
 {
-  // Create a directory to save files if noy exits you can  change folder name
+  // Create a directory to save the files if it doesn't exist
   $folder = "scraped_pages";
   if (!is_dir($folder)) {
     mkdir($folder);
   }
 
-  // Create a filename based on the URL
+  // Generate a filename based on the URL
   $parsed_url = parse_url($url);
   $path = isset($parsed_url["path"]) ? $parsed_url["path"] : "index";
   $filename = $folder . "/" . trim(str_replace("/", "_", $path), "_") . ".html";
 
-  // Save the HTML to the file
+  // Save the HTML content to the file
   file_put_contents($filename, $html);
   echo "Saved HTML to: $filename\n";
 }
 
 /**
- * Extract all internal links from the HTML content
+ * Extract internal links from the HTML content.
  */
 function extract_internal_links($html, $base_url)
 {
@@ -161,13 +131,13 @@ function extract_internal_links($html, $base_url)
 
   $links = [];
 
-  // Extract all <a> tags with href attributes
+  // Extract all <a> tags and their href attributes
   foreach ($dom->getElementsByTagName("a") as $node) {
     $href = $node->getAttribute("href");
     if (!empty($href)) {
       $absolute_url = make_absolute_url($href, $base_url);
 
-      // Only include links that are part of the original domain
+      // Only include links that belong to the original domain
       $parsed_base = parse_url($base_url);
       $parsed_link = parse_url($absolute_url);
 
@@ -180,12 +150,12 @@ function extract_internal_links($html, $base_url)
     }
   }
 
-  // Remove duplicates
+  // Remove duplicates and return unique internal links
   return array_unique($links);
 }
 
 /**
- * Converts a relative URL to an absolute URL.
+ * Convert a relative URL to an absolute URL based on the base URL.
  */
 function make_absolute_url($relative_url, $base_url)
 {
@@ -193,11 +163,9 @@ function make_absolute_url($relative_url, $base_url)
     return $relative_url;
   }
 
-  // Convert relative URL to absolute URL
+  // Build the absolute URL by appending the relative URL to the base URL
   return rtrim($base_url, "/") . "/" . ltrim($relative_url, "/");
 }
 
-// Start scraping from the initial url
+// Start the scraping process from the initial URL
 scrape_site($start_url);
-
-?>
