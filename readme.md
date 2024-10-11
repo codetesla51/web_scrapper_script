@@ -7,7 +7,8 @@ This PHP script provides a simple web scraping solution with added features such
 - **Proxy Rotation**: The script uses a list of proxies, rotating them randomly to avoid getting blocked by websites.
 - **User-Agent Rotation**: Random user-agent strings are selected to mimic requests from different browsers and devices.
 - **Internal Link Scraping**: The scraper can recursively follow and scrape internal links from the base URL.
-- **Customizable Depth**: You can control how deep the recursion goes when following internal links.
+- **Customizable Depth**: You can control how deep the recursion goes when
+following internal links more depths slower scrapping .
 - **HTML Saving**: All scraped HTML pages are saved locally in a structured format for later use.
 
 ## Requirements
@@ -19,18 +20,21 @@ This PHP script provides a simple web scraping solution with added features such
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/codetesla52/web-scraper-tool.git
-    cd web-scraper-tool
+    https://github.com/codetesla51/web_scrapper_script.git
+    cd web_scrapper_script
     ```
 
 2. Ensure `cURL` is enabled in your PHP installation:
     ```bash
     sudo apt install php-curl
     ```
-
+- termux
+    ```bash
+     apt install php-curl
+    ```
 3. Create a folder named `scraped_pages` in the root directory to store the scraped HTML files:
     ```bash
-    mkdir pages
+    mkdir scraped_pages
     ```
 
 4. Create your proxy list file:
@@ -64,10 +68,12 @@ This PHP script provides a simple web scraping solution with added features such
 
 ## Configuration
 
-- To change the base URL or the maximum depth of scraping, modify the script:
+- To change the base URL or the maximum depth higher depths scrapping becomes
+slower .of scraping, modify the script:
     ```php
     $base_url = 'https://example.com';
-    $max_depth = 3;  // Default is 3 levels deep
+    $max_depth = 1;  // Default is 1 levels deep 
     ```
 
 - To add new proxies or user-agents, update the `proxies.txt` or `user-agents.txt` files with new entries.
+- star if you find useful ,creat pull requests.
