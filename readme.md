@@ -57,14 +57,10 @@ following internal links more depths slower scrapping .
 
 ## Usage
 
-1. Run the scraper by executing the PHP script:
-    ```bash
-    php scraper.php
-    ```
 
-2. The script will scrape the specified base URL, follow internal links up to the defined depth, and save the HTML content of each page in the `pages` directory.
+1. The script will scrape the specified base URL, follow internal links up to the defined depth, and save the HTML content of each page in the `pages` directory.
 
-3. Logs will be printed in the console to show the scraping progress.
+2. Logs will be printed in the console to show the scraping progress.
 
 ## Configuration
 
