@@ -24,10 +24,10 @@ function get_user_agents()
 }
 
 // Set the target URL for scraping
-$start_url = "your-url.com"; // Change this to the URL you want to scrape
+$start_url = "https://uthmandev.vercel.app"; // Change this to the URL you want to scrape
 
 $visited_urls = []; // Track URLs already visited
-$max_depth = 3; // Maximum depth for recursive scraping (to avoid going too deep)
+$max_depth = 1; // Maximum depth for recursive scraping (to avoid going too deep)
 
 /**
  * Main function to start scraping a website.
